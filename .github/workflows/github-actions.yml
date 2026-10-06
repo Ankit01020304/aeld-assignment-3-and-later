@@ -22,5 +22,13 @@ jobs:
           - uses: actions/checkout@v2
           - name: Checkout submodules
             run : git submodule update --init --recursive
+          - name: Debug assignment3 container
+            run: | 
+              whoami  
+              pwd    
+              env | sort
+              which aarch64-linux-gnu-gcc || echo "NOT FOUND"
+              ls -l /usr/bin/aarch64-linux-gnu-gcc || echo "NO FILE"
+              type aarch64-linux-gnu-gcc || true
           - name: Run full test
             run: ./full-test.sh
